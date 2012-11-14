@@ -13,15 +13,17 @@ module belt_holder_base(){
 }
 
 module belt_holder_beltcut(){
- position_tweak=-0.2;
  // Belt slit
  translate([-66,-0.5+10,3]) cube([67,1,15]);
  // Smooth insert cutout
  translate([-66,-0.5+10,12]) rotate([45,0,0]) cube([67,15,15]);
  // Individual teeth
- for ( i = [0 : 23] ){
-  translate([0-i*3+position_tweak,-0.5+8,3]) cube([1.7,3,15]);
+ for ( i = [3.4 : 11] ){
+  translate([0-i*2.5,-0.5+8+0.5,3]) cube([1.25,2.5,15]);
  }
+ for ( i = [18 : 11.1] ){
+  translate([0-i*2.5,-0.5+8+0.5,3]) cube([1.25,2.5,15]);
+}
  // Middle opening
  translate([-2-25,-1,3]) cube([4,11,15]);	
 }
