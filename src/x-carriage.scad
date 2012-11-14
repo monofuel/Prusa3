@@ -20,7 +20,7 @@ module x_carriage_base(){
 
 module x_carriage_beltcut(){
  // Cut in the middle for belt
- translate([-2.5-16.5+1,19,7]) cube([4.5,13,15]);
+ translate([-16.5-2.25,19,7]) cube([4.5,13,15]);
  // Cut clearing space for the belt
  translate([-38,5,7]) cube([40,13,15]);
  // Belt slit
@@ -28,8 +28,11 @@ module x_carriage_beltcut(){
  // Smooth entrance
  translate([-66,21.5+10,14]) rotate([45,0,0]) cube([67,15,15]);
  // Teeth cuts
- for ( i = [0 : 23] ){
-  translate([0-i*3,21.5+8,6]) cube([1.7,3,15]);
+ for ( i = [0 : 6] ){
+  translate([0-i*2.5,21.5+8+0.5,6]) cube([1.25,2.5,15]);
+ }
+ for ( i = [7.7 : 14] ){
+  translate([0-i*2.5,21.5+8+0.5,6]) cube([1.25,2.5,15]);
  }
 }
 
