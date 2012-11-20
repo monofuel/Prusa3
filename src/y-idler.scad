@@ -15,9 +15,21 @@ module y_idler_base(){
 
 module y_idler_holes(){
  translate(v = [0,0,-1]) cylinder(h = 120, r=2.5);	
- translate(v = [0,20,-1]) cylinder(h = 25, r=4.5);
+translate([0,20,20]) rotate([0,90,0]) teardrop(r=4.4,h=21,$fn=30);
  translate(v = [0,0,4]) cylinder(h = 11, r=12);
 }
+
+module teardrop (r=8,h=20)
+{
+rotate([-270,0,90])
+linear_extrude(height=h)
+{
+circle(r=r);
+polygon(points=[[0,0],[r*cos(30),r*sin(30)],[0.5*r,r],[-0.5*r,r],[-r*cos(30),r*sin(30)]],
+paths=[[0,1,2,3,4]]);
+}
+}
+
 
 // Final part
 module y_idler(){
