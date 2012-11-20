@@ -13,9 +13,9 @@ module corner_base(){
 module corner_holes(){
  translate([-11,-11,0]){
   // Bottom hole
-  translate([0,11,10]) rotate([0,90,0]) translate([0,0,-5]) cylinder(h = 270, r=4.4, $fn=30);
+translate([1,11,10]) rotate([90,0,0]) teardrop(r=4.4,h=20,$fn=30);
   // Top hole
-  translate([0,11,30]) rotate([0,90,0]) translate([0,0,-5]) cylinder(h = 270, r=4.4, $fn=30);
+translate([1,11,30]) rotate([90,0,0]) teardrop(r=4.4,h=20,$fn=30);
   // Middle hole
   translate([11,0,20]) rotate([0,0,90]) rotate([0,90,0]) translate([0,0,-5]) cylinder(h = 270, r=4.4, $fn=30);
 
@@ -37,6 +37,17 @@ module corner_fancy(){
   rotate([0,0,90]){
    translate([-9,0,49-2]) rotate([0,-45,0]) translate([-15,-15,0]) cube([30,30,30]);
   }
+}
+
+module teardrop (r=8,h=20)
+{
+rotate([-270,0,90])
+linear_extrude(height=h)
+{
+circle(r=r);
+polygon(points=[[0,0],[r*cos(30),r*sin(30)],[0.5*r,r],[-0.5*r,r],[-r*cos(30),r*sin(30)]],
+paths=[[0,1,2,3,4]]);
+}
 }
 
 
