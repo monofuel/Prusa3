@@ -36,7 +36,7 @@ printable();					//places parts in position for exporting as a printable stl.
 
 module printable(){
 translate([6,-12,10]) rotate([-90,0,0]) extruder();
-translate([24.5,0,0]) rotate([0,0,0]) idler();
+translate([26.5,0,0]) rotate([0,0,0]) idler();
 translate([20,23,0]) rotate([0,-90,0]) extruder_holder();
 //motor bridge supports
 translate([0,0,1.15]) cube(([18,4,2.3]),center=true);
@@ -45,10 +45,10 @@ translate([0,0,(layer_height/2)+18.6]) cube(([18,25,layer_height]),center=true);
 translate([-4.5,0,(layer_height/2)+14.5]) cube(([9,15,layer_height]),center=true);
 translate([7.5,0,(layer_height/2)+12.5]) cube(([3,15,layer_height]),center=true);
 //idler fixing blanks
-translate([33.5,3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
-translate([33.5,-3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
-translate([15.5,-3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
-translate([15.5,3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
+translate([35.5,3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
+translate([35.5,-3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
+translate([17.5,-3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
+translate([17.5,3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
 }
 
 module assembled(){
