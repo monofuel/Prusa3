@@ -5,6 +5,7 @@ The extruder is designed to use a bowden cable system for 1.75mm filament.
 Can be mounted directly on the frame of the new Prusa i3.
 The face of the extruder is left open for easy cleaning of the drive gear.
 Ajustment of the idler spring tension is achieved by tightening the 4x long m3 screws which are positioned along with the springs and washers at the front of the extruder.
+625 bearing on the top of the extruder is for stepper shaft support (not a requirement if no bearings available).
 */
 
 /*
@@ -17,7 +18,8 @@ requires:
 1x m5x12mm threaded rod.
 1x 4mm OD, 2mm ID pneumatic fitting with m5 thread.
 1x mk7 drive gear.
-2x 624 bearings.
+1x 624 bearing.			//idler bearing.
+1x 625 bearing.			//used for motor shaft support, can be used without.
 4x springs.
 
 Jobs to do:
@@ -39,16 +41,14 @@ translate([6,-12,10]) rotate([-90,0,0]) extruder();
 translate([26.5,0,0]) rotate([0,0,0]) idler();
 translate([20,23,0]) rotate([0,-90,0]) extruder_holder();
 //motor bridge supports
-translate([0,0,1.15]) cube(([18,4,2.3]),center=true);
+translate([0,0,7.25]) cube(([18,2,14.5]),center=true);
 translate([0,0,(layer_height/2)+2.2]) cube(([18,25,layer_height]),center=true);
-translate([0,0,(layer_height/2)+18.6]) cube(([18,25,layer_height]),center=true);
-translate([-4.5,0,(layer_height/2)+14.5]) cube(([9,15,layer_height]),center=true);
-translate([7.5,0,(layer_height/2)+12.5]) cube(([3,15,layer_height]),center=true);
+translate([0,0,(layer_height/2)+14.5]) cube(([18,14,layer_height]),center=true);
 //idler fixing blanks
-translate([35.5,3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
-translate([35.5,-3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
-translate([17.5,-3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
-translate([17.5,3.5,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
+translate([35.5,4,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
+translate([35.5,-4,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
+translate([17.5,-4,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
+translate([17.5,4,2.15]) cylinder(r=2,h=layer_height,center=true,$fn=20);
 }
 
 module assembled(){
@@ -57,7 +57,8 @@ extruder();
 translate([13.5,0,12]) rotate([0,-90,0]) idler();
 translate([-5.9,33.5,12]) %nema17();
 translate([-5.9,2,12]) rotate([90,0,0]) %drive_gear();
-translate([-5.9,-6.5,12]) rotate([90,0,0]) %624_bearing();			//drive bearing
+translate([-5.9,-8.5,12]) rotate([90,0,0]) %625_bearing();			//drive bearing
+translate([7,0,12]) rotate([90,0,0]) %624_bearing();				//idler bearing
 translate([0,0,10]) #cylinder(r=0.875,h=60,center=true,$fn=20);	//filament
 translate([0,0,35.9]) rotate([0,180,0]) %pneumatic();
 }
@@ -69,16 +70,16 @@ difference(){
 union(){
 difference(){
 //extruder body
-translate([-6,0,12]) cube(([18,20,24]),center=true);
+translate([-6,-0.5,12]) cube(([18,21,24]),center=true);
 //idler bearing cut out
-translate([6.5,5,12]) rotate([90,0,0]) cylinder(r=7,h=15,center=true,$fn=30);
+translate([6.5,3,12]) rotate([90,0,0]) cylinder(r=7,h=15,center=true,$fn=30);
 //drive gear cleaning access
-translate([-15.9,3,12]) cube(([20,15,13+clearance]),center=true);}
+translate([-15.9,3,12]) cube(([20,15,13.5]),center=true);}
 //motor supports
 translate([-6,5,26.5]) cube(([30,10,4]),center=true);
-translate([-6,0,26.25]) cube(([18,20,4.5]),center=true);
+translate([-6,-0.5,26.25]) cube(([18,21,4.5]),center=true);
 translate([-6,5,-2.5]) cube(([30,10,4]),center=true);
-translate([-6,0,-2.25]) cube(([18,20,4.5]),center=true);
+translate([-6,-0.5,-2.25]) cube(([18,21,4.5]),center=true);
 translate([3,0,-2.5]) rotate([0,0,45]) cube(([10,5,4]),center=true);
 translate([-15,0,-2.5]) rotate([0,0,-45]) cube(([10,5,4]),center=true);
 translate([3,0,26.5]) rotate([0,0,45]) cube(([10,5,4]),center=true);
@@ -101,14 +102,17 @@ translate([8,0,-3]) cube(([5,10,6]),center=true);
 translate([-21.4,-6,-3.5]) rotate([90,0,0]) cylinder(r=2.8,h=20,center=true,$fn=20);
 translate([-21.4,-6,27.5]) rotate([90,0,0]) cylinder(r=2.8,h=20,center=true,$fn=20); 
 //drive gear cut out
-translate([-5.9,0.95,12]) rotate([90,0,0]) cylinder(r=6.5+clearance,h=19.1,center=true,$fn=30);
+translate([-5.9,3,12]) rotate([90,0,0]) cylinder(r=6.75,h=15,center=true,$fn=30);
 //drive shaft cutout
-translate([-5.9,0,12]) rotate([90,0,0]) cylinder(r=4.5,h=22,center=true,$fn=30);
+translate([-5.9,0,12]) rotate([90,0,0]) cylinder(r=3,h=22,center=true,$fn=30);
+//drive shaft support bearing cutout
+translate([-5.9,-8.5,12]) rotate([90,0,0]) cylinder(r=5,h=6,center=true,$fn=30);
+translate([-5.9,-9,12]) rotate([90,0,0]) cylinder(r=8+clearance,h=6,center=true,$fn=30);
 //idler fixings
-translate([-25,3.5,21]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
-translate([-25,-3.5,21]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
-translate([-25,-3.5,3]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
-translate([-25,3.5,3]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
+translate([-25,4,21]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
+translate([-25,-4,21]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
+translate([-25,-4,3]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
+translate([-25,4,3]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
 //idler path
 translate([11,-2.65,12]) idler_cut();
 translate([-23,-2.65,12]) idler_cut();
@@ -128,29 +132,29 @@ translate([-5,-17,24.5]) rotate([-45,0,0]) cube(([50,10,50]),center=true);
 module idler_block(){
 difference(){
 minkowski(){
-translate([0,0,4.5]) cube(([18.5,8,9]),center=true);
+translate([0,0,4.5]) cube(([18.5,9,9]),center=true);
 cylinder(r=3,h=1,$fn=30);}
 //idler bearing cut out
-translate([0,0,6.5]) rotate([90,0,0]) cylinder(r=7.5,h=6,center=true,$fn=30);}
+translate([0,0,6.5]) rotate([90,0,0]) cylinder(r=7.5,h=7,center=true,$fn=30);}
 //bearing guides
-translate([0,2.5,6.5]) rotate([90,0,0]) cylinder(r1=4.3,r2=3.3,h=1,center=true,$fn=30);
-translate([0,-2.5,6.5]) rotate([-90,0,0]) cylinder(r1=4.3,r2=3.3,h=1,center=true,$fn=30);
+translate([0,3,6.5]) rotate([90,0,0]) cylinder(r1=4.3,r2=3.3,h=1,center=true,$fn=30);
+translate([0,-3,6.5]) rotate([-90,0,0]) cylinder(r1=4.3,r2=3.3,h=1,center=true,$fn=30);
 }
 
 module idler_fixings(){
 //shaft
-translate([0,0,6.5]) rotate([90,0,0]) cylinder(r=2.5,h=12,center=true,$fn=30);
-translate([0,0,9.5]) cube(([5,12,6]),center=true);
+translate([0,0,6.5]) rotate([90,0,0]) cylinder(r=2,h=12,center=true,$fn=30);
+translate([0,0,9.5]) cube(([4,12,6]),center=true);
 //fixings
-translate([9,3.5,24]) cylinder(r=1.7,h=50,center=true,$fn=20);
-translate([9,-3.5,24]) cylinder(r=1.7,h=50,center=true,$fn=20);
-translate([-9,-3.5,24]) cylinder(r=1.7,h=50,center=true,$fn=20);
-translate([-9,3.5,24]) cylinder(r=1.7,h=50,center=true,$fn=20);
+translate([9,4,24]) cylinder(r=1.7,h=50,center=true,$fn=20);
+translate([9,-4,24]) cylinder(r=1.7,h=50,center=true,$fn=20);
+translate([-9,-4,24]) cylinder(r=1.7,h=50,center=true,$fn=20);
+translate([-9,4,24]) cylinder(r=1.7,h=50,center=true,$fn=20);
 //nut traps
-translate([9,3.5,-1]) rotate([0,0,30]) cylinder(r=3.1,h=3,$fn=6);
-translate([9,-3.5,-1]) rotate([0,0,30]) cylinder(r=3.1,h=3,$fn=6);
-translate([-9,-3.5,-1]) rotate([0,0,30]) cylinder(r=3.1,h=3,$fn=6);
-translate([-9,3.5,-1]) rotate([0,0,30]) cylinder(r=3.1,h=3,$fn=6);
+translate([9,4,-1]) rotate([0,0,30]) cylinder(r=3.1,h=3,$fn=6);
+translate([9,-4,-1]) rotate([0,0,30]) cylinder(r=3.1,h=3,$fn=6);
+translate([-9,-4,-1]) rotate([0,0,30]) cylinder(r=3.1,h=3,$fn=6);
+translate([-9,4,-1]) rotate([0,0,30]) cylinder(r=3.1,h=3,$fn=6);
 }
 
 module idler(){
@@ -159,7 +163,14 @@ idler_block();
 idler_fixings();
 }
 translate([0,0,6.5]) rotate([90,0,0]) %624_bearing();
-translate([0,0,6.5]) rotate([90,0,0]) %cylinder(r=2.5,h=12,center=true,$fn=30);
+translate([0,0,6.5]) rotate([90,0,0]) %cylinder(r=2,h=12,center=true,$fn=30);
+}
+
+module idler_cut(){
+difference(){
+cube(([16,21,25]),center=true);
+translate([0,11,14.5]) rotate([-45,0,0]) cube(([20,10,5]),center=true);
+translate([0,11,-14.5]) rotate([45,0,0]) cube(([20,10,5]),center=true);}
 }
 
 module nema17(){
@@ -217,10 +228,18 @@ translate([0,0,2]) bearing_slot();
 }
 }
 
-module 624_bearing()
+module 624_bearing(){
 difference(){
-cylinder(r=6.5,h=4,center=true,$fn=30);
-cylinder(r=2.6,h=6,center=true,$fn=30);
+cylinder(r=6.5,h=5,center=true,$fn=30);
+cylinder(r=2,h=6,center=true,$fn=30);
+}
+}
+
+module 625_bearing(){
+difference(){
+cylinder(r=8,h=5,center=true,$fn=30);
+cylinder(r=2.5,h=6,center=true,$fn=30);
+}
 }
 
 module bracket_fancy(){
@@ -289,11 +308,4 @@ translate([0,0,-5]) cylinder(r=2,h=14.5,center=true,$fn=20);
 translate([0,0,5]) cylinder(r=1,h=14.5,center=true,$fn=20);
 }
 }
-}
-
-module idler_cut(){
-difference(){
-cube(([16,21,25]),center=true);
-translate([0,11,14.5]) rotate([-45,0,0]) cube(([20,10,5]),center=true);
-translate([0,11,-14.5]) rotate([45,0,0]) cube(([20,10,5]),center=true);}
 }
