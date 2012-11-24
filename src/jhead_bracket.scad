@@ -16,7 +16,7 @@ PTFE tube to match fitting.
 25mm 12V DC fan.
 2x m3 nuts.
 2x m3 washers.
-2x m3x 25mm cap screws.
+2x m3x 40mm cap screws.
 6x self taping screws
 2x cable ties
 */
@@ -27,8 +27,8 @@ use<x-carriage.scad>
 clearance = 0.2;			//adjust if tight or slack once printed.
 
 //uncomment to view.
-//assembly();			//shows components assembled in position.
-print();					//places parts in position for exporting as a printable stl.
+assembly();			//shows components assembled in position.
+//print();					//places parts in position for exporting as a printable stl.
 
 
 

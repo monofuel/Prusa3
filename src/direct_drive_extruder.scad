@@ -15,11 +15,11 @@ requires:
 5x m3x10mm cap screws.
 2x m3x14mm cap screws.
 4x m3x40mm cap screws.
-1x m5x12mm threaded rod.
+1x 4mmx12mm round bar or threaded bar. 	//Cut a m4 bolt to size.
 1x 4mm OD, 2mm ID pneumatic fitting with m5 thread.
 1x mk7 drive gear.
-1x 624 bearing.			//idler bearing.
-1x 625 bearing.			//used for motor shaft support, can be used without.
+1x 624 bearing.							//idler bearing.
+1x 625 bearing.							//used for motor shaft support, can be used without.
 4x springs.
 
 Jobs to do:
@@ -31,8 +31,8 @@ clearance 	= 0.2;			//adjust if tight or slack once printed.
 layer_height	= 0.3;			//used for removable structure.
 
 //uncomment to view.
-//assembled();				//shows components assembled in position.
-printable();					//places parts in position for exporting as a printable stl.
+assembled();				//shows components assembled in position.
+//printable();					//places parts in position for exporting as a printable stl.
 
 
 
