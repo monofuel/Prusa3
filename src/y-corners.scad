@@ -20,7 +20,7 @@ translate([1,11,30]) rotate([90,0,0]) teardrop(r=4.4,h=20,$fn=30);
   translate([11,0,20]) rotate([0,0,90]) rotate([0,90,0]) translate([0,0,-5]) cylinder(h = 270, r=5.4, $fn=30);
 
   // Washer hole
-  translate([11,-3,20]) rotate([0,0,90]) rotate([0,90,0]) translate([0,0,-5]) cylinder(h = 10, r=11, $fn=30);
+  translate([11,-3.8,20]) rotate([0,0,90]) rotate([0,90,0]) translate([0,0,-5]) cylinder(h = 10, r=11, $fn=30);
 
   // Top smooth rod insert
   // Smooth rod place
