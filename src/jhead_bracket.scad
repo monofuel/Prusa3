@@ -35,15 +35,15 @@ assembly();			//shows components assembled in position.
 module clamp(){
 difference(){
 union(){
-cube(([24,6,9]),center=true);
+translate([0,-0.25,0]) cube(([24,5.5,9]),center=true);
 }
 union(){
 translate([0,8,0]) jhead_cut();
 //fixings
 translate([9,0,0]) rotate([90,0,0]) cylinder(r=1.25,h=20,center=true,$fn=20);
 translate([-9,0,0]) rotate([90,0,0]) cylinder(r=1.25,h=20,center=true,$fn=20);
-translate([9,-6,0]) rotate([90,0,0]) cylinder(r=2.5,h=10,center=true,$fn=20);
-translate([-9,-6,0]) rotate([90,0,0]) cylinder(r=2.5,h=10,center=true,$fn=20);
+translate([9,-6,0]) rotate([90,0,0]) cylinder(r=2.8,h=10,center=true,$fn=20);
+translate([-9,-6,0]) rotate([90,0,0]) cylinder(r=2.8,h=10,center=true,$fn=20);
 }
 }
 }
@@ -116,8 +116,8 @@ translate([0,6,-34]) cube(([18+(clearance*2),12+(clearance*2),1+(clearance*2)]),
 translate([0,2,-10.75]) cube(([24+(clearance*2),11,9+(clearance*2)]),center=true);
 translate([0,2,-15]) cube(([20,11,3]),center=true);
 //jhead clamp fixings
-translate([9,7.5,-10.75]) rotate([90,0,0]) cylinder(r=1,h=20,center=true,$fn=20);
-translate([-9,7.5,-10.75]) rotate([90,0,0]) cylinder(r=1,h=20,center=true,$fn=20);
+translate([9,7.5,-10.75]) rotate([90,0,0]) cylinder(r=1.1,h=20,center=true,$fn=20);
+translate([-9,7.5,-10.75]) rotate([90,0,0]) cylinder(r=1.1,h=20,center=true,$fn=20);
 //cableties
 translate([16.5,24.25,-8.75]) cabletie();
 translate([-16.5,24.25,-8.75]) cabletie();
