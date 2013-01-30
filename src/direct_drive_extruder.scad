@@ -23,12 +23,15 @@ requires:
 4x springs.
 
 Jobs to do:
-Assess the fit of the bearing in the idler and main block.
+Asses the 1.75 to 3mm print quality.
 */
 
 //globals
-clearance 	= 0.2;			//adjust if tight or slack once printed.
-layer_height	= 0.3;			//used for removable structure.
+clearance 		= 0.2;			//adjust if tight or slack once printed.
+layer_height		= 0.3;			//used for removable structure.
+filament_dia		= 1.75;			//set as 1.75 or 3.
+thread_dia		= 10;			//diameter of pneumatic fitting thread.
+thread_length	= 5;				//length of pneumatic fitting thread.
 
 //uncomment to view.
 assembled();				//shows components assembled in position.
@@ -117,11 +120,11 @@ translate([-25,4,3]) rotate([90,0,0]) teardrop(r=1.7,h=50,$fn=20);
 translate([11,-2.65,12]) idler_cut();
 translate([-23,-2.65,12]) idler_cut();
 //filament path
-translate([0,0,-20]) rotate([90,0,0]) rotate([0,0,90]) teardrop(r=1.1,h=60,$fn=20);
-translate([0,-0.6,9.2]) rotate([45,0,0]) cube(([16,2,2]),center=true);
-translate([0,-0.6,14.8]) rotate([45,0,0]) cube(([16,2,2]),center=true);
+translate([0,0,-20]) rotate([90,0,0]) rotate([0,0,90]) teardrop(r=(filament_dia/2)+0.2,h=60,$fn=20);
+translate([0,-(filament_dia/2),9.15+(filament_dia/5)]) rotate([45,0,0]) cube(([16,filament_dia,filament_dia]),center=true);
+translate([0,-(filament_dia/2),14.75-(filament_dia/5)]) rotate([45,0,0]) cube(([16,filament_dia,filament_dia]),center=true);
 //pneumatic fitting
-translate([0,0,24.25]) rotate([90,0,0]) rotate([0,0,90]) teardrop(r=2.35,h=5,$fn=20);
+translate([0,0,24.25]) rotate([90,0,0]) rotate([0,0,90]) teardrop(r=2.35,h=thread_length,$fn=20);
 //fancy top
 translate([-6,-17,-0.5]) rotate([45,0,0]) cube(([21,10,50]),center=true);
 translate([-5,-17,24.5]) rotate([-45,0,0]) cube(([50,10,50]),center=true);
