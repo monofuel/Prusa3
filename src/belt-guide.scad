@@ -6,7 +6,7 @@
 // http://prusamendel.org
 
 wall= 1.4;
-clearence= 0.2; 
+clearence= 0.25; 
 
 module belt_guide_base(){
  cylinder(r=6.5+wall+clearence, h=4.5, $fn=50);
