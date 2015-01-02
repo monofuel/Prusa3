@@ -40,8 +40,12 @@ translate([0,-0.25,0]) cube(([24,5.5,9]),center=true);
 union(){
 translate([0,8,0]) jhead_cut();
 //fixings
-translate([9,0,0]) rotate([90,0,0]) cylinder(r=1.25,h=20,center=true,$fn=20);
-translate([-9,0,0]) rotate([90,0,0]) cylinder(r=1.25,h=20,center=true,$fn=20);
+//monofuel - increased cylender sizes so that
+//screws can slide freely without threading. this piece
+//just holds the j-head, and the screws should thread into the main part.
+//i also increased the holds to sink the screw heads in easier.
+translate([9,0,0]) rotate([90,0,0]) cylinder(r=1.6,h=20,center=true,$fn=20);
+translate([-9,0,0]) rotate([90,0,0]) cylinder(r=1.6,h=20,center=true,$fn=20);
 translate([9,-6,0]) rotate([90,0,0]) cylinder(r=2.8,h=10,center=true,$fn=20);
 translate([-9,-6,0]) rotate([90,0,0]) cylinder(r=2.8,h=10,center=true,$fn=20);
 }
@@ -81,11 +85,19 @@ union(){
 translate([16.5,12,-37.6]) rotate([0,-45,0]) cube(([30,26,10]),center=true);
 translate([-16.5,12,-37.6]) rotate([0,45,0]) cube(([30,26,10]),center=true);
 //fixing holes
+//monofuel
+//increased hole sizes to allow for easier threading
 translate([12,10,0]) rotate([90,0,0]) cylinder(r=1.5,h=60,center=true,$fn=30);
 translate([-12,10,0]) rotate([90,0,0]) cylinder(r=1.5,h=60,center=true,$fn=30);
 //pneumatic fitting
-translate([0,12,0]) rotate([90,0,0]) rotate([0,0,90]) teardrop(r=3.175,h=5,$fn=40);
+//monofuel
+//increased pneumatic fitting hole to make threading easier, and allow
+//the coupling to thread in all the way. i measured the thread on my coupling
+//at 8mm. Perhaps the whole part should be scaled up an extra 1mm to get full 8mm?
+//set to 7mm atm. close nuff.
+translate([0,12,-2]) rotate([90,0,0]) rotate([0,0,90]) teardrop(r=4.8,h=7,$fn=40);
 //nut for pneumatic fitting
+//monofuel - removing this, because i like threading plastic.
 //translate([0,12,-1]) rotate([0,0,30]) cylinder(h=4,r=4.6,$fn=6);
 //translate([0,0,1]) cube(([8,24,4]),center=true);
 //jhead
@@ -98,26 +110,38 @@ translate([0,12,-23.75]) cube(([25.5,8,13.5]),center=true);
 translate([18,12,-23.75]) vent();
 translate([-18,12,-23.75]) rotate([0,0,180]) vent();
 //fan fixing hole
+//monofuel
+//increased hole size to play nicely with threading and m3 screws.
+//caveat: i don't actually have a fan to use atm, so i don't know
+//what screws to use. i'm assuming m3.
+//i also shrunk the holes to 8mm depth, assuming that i'm using
+//10mm long screws to attach the fan, it should be fine.
 translate([0,29,-23.35]) rotate([90,0,0]){
-translate([10.15,10.15,10]) cylinder(r=1,h=12,center=true,$fn=20);
-translate([10.15,-10.15,10]) cylinder(r=1,h=12,center=true,$fn=20);
-translate([-10.15,-10.15,10]) cylinder(r=1,h=12,center=true,$fn=20);
-translate([-10.15,10.15,10]) cylinder(r=1,h=12,center=true,$fn=20);}
+translate([10.15,10.15,10]) cylinder(r=1.5,h=8,center=true,$fn=20);
+translate([10.15,-10.15,10]) cylinder(r=1.5,h=8,center=true,$fn=20);
+translate([-10.15,-10.15,10]) cylinder(r=1.5,h=8,center=true,$fn=20);
+translate([-10.15,10.15,10]) cylinder(r=1.5,h=8,center=true,$fn=20);}
 //fan vent
 translate([0,20.6,-23.35]) rotate([90,0,0]) cylinder(r1=11.8,r2=5,h=7.2,center=true,$fn=50);    //r2=6 for 40 degree,  r2=5 for 45ish!
 //slotted peek section clearance
 translate([0,12,-23.75]) cylinder(r=10,h=16.5,center=true,$fn=50);
 translate([0,0,-23.75]) cube(([20,24,16.5]),center=true);
 //filament
-translate([0,12,0]) cylinder(r=1.6,h=60,center=true,$fn=20);
+//monofuel
+//increased to 1.6 for 3mm filament with some leeway.
+// later increased to 1.7 as 1.6 was a bit tight.
+translate([0,12,0]) cylinder(r=1.7,h=60,center=true,$fn=20);
 //bottom blank
 translate([0,6,-34]) cube(([18+(clearance*2),12+(clearance*2),1+(clearance*2)]),center=true);
 //clamp
 translate([0,2,-10.75]) cube(([24+(clearance*2),11,9+(clearance*2)]),center=true);
 translate([0,2,-15]) cube(([20,11,3]),center=true);
 //jhead clamp fixings
-translate([9,7.5,-10.75]) rotate([90,0,0]) cylinder(r=1.1,h=20,center=true,$fn=20);
-translate([-9,7.5,-10.75]) rotate([90,0,0]) cylinder(r=1.1,h=20,center=true,$fn=20);
+//monofuel
+//increased hole size to make it easier to thread
+//decreased depth since we're only using 10mm 3m cap screws
+translate([9,7.5,-10.75]) rotate([90,0,0]) cylinder(r=1.5,h=15,center=true,$fn=20);
+translate([-9,7.5,-10.75]) rotate([90,0,0]) cylinder(r=1.5,h=15,center=true,$fn=20);
 //cableties
 translate([16.5,24.25,-8.75]) cabletie();
 translate([-16.5,24.25,-8.75]) cabletie();
